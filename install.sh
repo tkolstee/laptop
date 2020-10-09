@@ -8,9 +8,10 @@ for directive in HandleLidSwitch HandleLidSwitchExternalPower HandleLidSwitchDoc
   if [ $? == 0 ]; then
     sed -i -e 's/^\s*${directive}\s*=.*$/${directive}=lock/' /etc/systemd/logind.conf
   else
-    echo "${directive}=lock" >> /etc/systemd/login.conf
+    echo "${directive}=lock" >> /etc/systemd/logind.conf
   fi
 done
+systemctl restart systemd-logind.service
 
 install -o root -g root -m 0755 backlightd /usr/local/bin/backlightd
 install -o root -g root -m 0644 backlightd.service /lib/systemd/system/backlightd.service
