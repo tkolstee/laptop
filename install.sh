@@ -6,7 +6,7 @@ systemctl enable avahi-daemon
 for directive in HandleLidSwitch HandleLidSwitchExternalPower HandleLidSwitchDocked; do
   egrep -q "^\s*${directive}\s*=" /etc/systemd/login.conf
   if [ $? == 0 ]; then
-    sed -i -e 's/^\s*${directive}\s*=.*$/${directive}=lock/' /etc/systemd/login.conf
+    sed -i -e 's/^\s*${directive}\s*=.*$/${directive}=lock/' /etc/systemd/logind.conf
   else
     echo "${directive}=lock" >> /etc/systemd/login.conf
   fi
