@@ -1,0 +1,10 @@
+[Unit]
+Description = Controls the backlight depending upon the lid state
+After = syslog.target network.target
+
+[Service]
+Type = simple
+ExecStart = /usr/local/bin/backlightd
+
+[Install]
+WantedBy = multi-user.target
