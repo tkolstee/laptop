@@ -14,7 +14,7 @@ done
 systemctl restart systemd-logind.service
 
 install -o root -g root -m 0755 backlightd /usr/local/bin/backlightd
-install -o root -g root -m 0644 backlightd.service /lib/systemd/system/backlightd.service
+install -o root -g root -m 0644 backlightd.service /etc/systemd/system/backlightd.service
 
 systemctl enable backlightd.service
 systemctl start backlightd.service
